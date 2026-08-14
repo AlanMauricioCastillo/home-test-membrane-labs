@@ -1,15 +1,50 @@
 {
-  "name": "collateral-health",
+  "name": "@mauricio_castillo/collateral-health",
   "version": "0.0.1",
   "description": "Pure TypeScript library to compute the health status of a loan (Collateral Arrangement).",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
+  "keywords": [
+    "collateral",
+    "health",
+    "loan",
+    "margin",
+    "liquidation",
+    "ltv",
+    "finance",
+    "typescript"
   ],
   "license": "MIT",
+  "author": "Mauricio Alan Castillo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlanMauricioCastillo/home-test-membrane-labs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AlanMauricioCastillo/home-test-membrane-labs/issues"
+  },
+  "homepage": "https://github.com/AlanMauricioCastillo/home-test-membrane-labs#readme",
+  "engines": {
+    "node": ">=14"
+  },
+  "sideEffects": false,
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "build": "tsc",
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "npm run clean && tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json && tsc -p tsconfig.types.json && node scripts/postbuild.mjs",
     "test": "jest",
     "prepublishOnly": "npm test && npm run build"
   },
