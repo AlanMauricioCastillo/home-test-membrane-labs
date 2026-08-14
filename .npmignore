@@ -1,6 +1,7 @@
 src/
 scripts/
 run.js
+index.ts
 test/
 *.test.ts
 tsconfig.json

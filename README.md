@@ -44,6 +44,20 @@ node run.js --balance 3 --price 60000 --requirement 100000 --event link
 `node run.js` (no arguments) runs the documented example. Run
 `node run.js --help` for all options.
 
+### Run the TypeScript source directly (no build)
+
+You can also run the source without compiling first, using `tsx`:
+
+```sh
+npx tsx index.ts
+npx tsx index.ts --balance 3 --price 60000 --requirement 100000 --event link
+# or, after npm install:
+npm run dev -- --balance 3 --price 60000 --requirement 100000 --event link
+```
+
+`npx tsx index.ts` (no arguments) runs the documented example. Run
+`npx tsx index.ts --help` for all options.
+
 ## API
 
 - `calculateLimits(ca, mockPrice): Limits` — turns a Collateral Arrangement and
