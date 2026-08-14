@@ -3,6 +3,47 @@
 A pure, functional TypeScript library that computes the health status of a
 loan (Collateral Arrangement - CA).
 
+## Installation
+
+```sh
+npm install @mauricio_castillo/collateral-health
+```
+
+## Quickstart
+
+```ts
+import { computeHealth } from '@mauricio_castillo/collateral-health';
+import type { CollateralArrangement } from '@mauricio_castillo/collateral-health';
+
+const ca: CollateralArrangement = {
+  balance: 2,            // 2 BTC
+  initialLtv: 0.5,       // 50%
+  maintenanceLtv: 0.65,  // 65%
+  liquidationLtv: 0.8,   // 80%
+};
+
+const status = computeHealth(ca, 42_000, 30_000, 'Good Standing', 'recompute');
+console.log(status); // => 'Maintenance Margin Call'
+```
+
+The package ships both CommonJS (`require`) and ES module (`import`) builds,
+plus TypeScript declarations, so it works out of the box in any Node or
+bundler project.
+
+### Run it locally (no npm install)
+
+From a clone of this repo, build once and then run the script directly with
+custom arguments:
+
+```sh
+npm install
+npm run build
+node run.js --balance 3 --price 60000 --requirement 100000 --event link
+```
+
+`node run.js` (no arguments) runs the documented example. Run
+`node run.js --help` for all options.
+
 ## API
 
 - `calculateLimits(ca, mockPrice): Limits` — turns a Collateral Arrangement and
@@ -19,8 +60,8 @@ Statuses: `Good Standing`, `Near Margin`, `Initial Margin Call`,
 ## Usage
 
 ```ts
-import { computeHealth } from 'collateral-health';
-import type { CollateralArrangement } from 'collateral-health';
+import { computeHealth } from '@mauricio_castillo/collateral-health';
+import type { CollateralArrangement } from '@mauricio_castillo/collateral-health';
 
 const ca: CollateralArrangement = {
   balance: 2,          // 2 BTC

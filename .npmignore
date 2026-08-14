@@ -1,0 +1,15 @@
+src/
+scripts/
+run.js
+test/
+*.test.ts
+tsconfig.json
+tsconfig.*.json
+jest.config.js
+.git/
+.gitignore
+.eslintrc*
+.prettierrc*
+node_modules/
+coverage/
+*.tgz
